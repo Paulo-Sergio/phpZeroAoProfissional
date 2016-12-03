@@ -7,6 +7,7 @@ class Core {
         $url = explode('index.php', $_SERVER['PHP_SELF']);
         $url = end($url);
 
+        $params = array();
         if (!empty($url)) {
             $url = explode('/', $url);
             array_shift($url); // remove $url[0] = ''
@@ -29,7 +30,6 @@ class Core {
         } else {
             $currentController = 'homeController';
             $currentAction = 'index';
-            $params = array();
         }
 
         require_once './core/Controller.php';
