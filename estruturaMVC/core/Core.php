@@ -32,9 +32,7 @@ class Core {
             $currentAction = 'index';
         }
 
-        require_once './core/Controller.php';
-
-        $controller = new $currentController();  
+        $controller = new $currentController();
         call_user_func_array(array($controller, $currentAction), $params);
     }
 
