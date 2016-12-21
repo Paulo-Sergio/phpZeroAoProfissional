@@ -1,1 +1,6 @@
-<h1>Meu nome é: <?= $name ?></h1>
+<h1>Algum code HTML</h1>
+
+<?php
+foreach ($fotos as $foto) {
+    echo 'Título: ' . $foto['titulo'] . '<br>';
+}
