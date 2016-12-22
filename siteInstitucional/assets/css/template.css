@@ -2,7 +2,10 @@ body{
     margin: 0;
     background-color: #1e1e1e;
 }
-
+h1{
+    margin: 0;
+    padding: 0;
+}
 
 
 /**
@@ -56,10 +59,11 @@ body{
 */
 .container{
     width: 100%;
-    max-width: 980px;
+    max-width: 960px;
     margin: auto;
     background-color: #FFF;
     min-height: 400px;
+    padding: 10px;
 }
 .home_sobre{
     padding: 20px;
@@ -74,6 +78,7 @@ body{
     padding: 0;
 }
 
+
 .home_portfolio{
     clear: both;
     padding: 20px;
@@ -86,6 +91,17 @@ body{
     margin: 10px;
 }
 
+
+.contato input,
+.contato textarea{
+    width: 400px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.contato textarea{
+    height: 130px;
+}
 
 /**
 ********** RODAPE *************
