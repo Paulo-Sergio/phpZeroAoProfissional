@@ -1,6 +1,8 @@
 <?php
 
 class Controller {
+    
+    public function __construct() {}
 
     public function loadView($viewName, $viewData = array()) {
         /** extract transformar as chaves do array em variaveis para acessar na view

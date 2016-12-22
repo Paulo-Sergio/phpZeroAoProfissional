@@ -74,6 +74,18 @@ body{
     padding: 0;
 }
 
+.home_portfolio{
+    clear: both;
+    padding: 20px;
+}
+.portfolio_item{
+    width: 200px;
+    height: 150px;
+    float: left;
+    border: 3px solid #e2e8ee;
+    margin: 10px;
+}
+
 
 /**
 ********** RODAPE *************
