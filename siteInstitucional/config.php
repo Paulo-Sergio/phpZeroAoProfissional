@@ -2,6 +2,8 @@
 
 require './enviroment.php';
 
+define('BASE_URL','http://localhost/phpZeroAoProfissional/siteInstitucional');
+
 global $config;
 $config = array();
 
