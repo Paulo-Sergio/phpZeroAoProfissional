@@ -27,7 +27,6 @@ class Usuarios extends Model {
         $sql->execute();
 
         $id = $this->db->lastInsertId();
-        print_r($id);
         return $id;
     }
 
@@ -40,7 +39,6 @@ class Usuarios extends Model {
         if ($sql->rowCount() > 0) {
             $sql = $sql->fetch();
             $_SESSION['twlg'] = $sql['id'];
-            print_r($_SESSION['twlg']);            exit();
             return true;
         } else {
             return false;
