@@ -12,9 +12,12 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $dados = array();
+        $dados = array(
+            'nome' => ''
+        );
 
-        
+        $u = new Usuarios($_SESSION['twlg']);
+        $dados['nome'] = $u->getNome();
 
         $this->loadTemplate('home', $dados);
     }

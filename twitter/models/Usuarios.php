@@ -2,6 +2,29 @@
 
 class Usuarios extends Model {
 
+    private $uid;
+
+    public function __construct($id = '') {
+        parent::__construct();
+        if (!empty($id)) {
+            $this->uid = $id;
+        }
+    }
+
+    public function getNome() {
+        if ($this->uid) {
+            $sql = $this->db->prepare('SELECT * FROM usuarios WHERE id = :id');
+            $sql->bindParam(':id', $this->uid);
+            $sql->execute();
+
+            if ($sql->rowCount() > 0) {
+                $sql = $sql->fetch();
+                return $sql['nome'];
+            }
+        }
+        return null;
+    }
+
     public function isLogged() {
         if (isset($_SESSION['twlg']) && !empty($_SESSION['twlg'])) {
             return true;
