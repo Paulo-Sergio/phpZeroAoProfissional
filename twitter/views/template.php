@@ -11,7 +11,7 @@
         <div class="topo">
             <div class="topoint">
                 <div class="topoleft">TWITTER</div>
-                <div class="toporight"><?php echo "Nome" ?> - <a href="<?= BASE_URL ?>/login/logout">Sair</a></div>
+                <div class="toporight"><?= $viewData['nome'] ?> - <a href="<?= BASE_URL ?>/login/logout">Sair</a></div>
                 <div style="clear:both"></div>
             </div>
         </div>
