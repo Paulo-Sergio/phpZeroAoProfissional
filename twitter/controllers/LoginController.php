@@ -48,6 +48,7 @@ class LoginController extends Controller {
 
     public function logout() {
         unset($_SESSION['twlg']);
+        session_destroy();
         header("Location: " . BASE_URL . "/login");
     }
 
