@@ -86,18 +86,47 @@ class Usuarios extends Model {
 
     public function getUsuarios($limite) {
         $usuarios = array();
-        
-        $sql = $this->db->prepare("SELECT * FROM usuarios WHERE id != :id LIMIT :limite");
+
+        // select de todos os campos da tabela usuarios
+        // um campo 'seguido' para saber se eu sou seguidor de outro usuario
+        $sql = $this->db->prepare("SELECT u.*, (SELECT count(*) FROM relacionamentos r WHERE r.id_seguidor = :id AND r.id_seguido = u.id) as seguido "
+                . "FROM usuarios u WHERE u.id != :id LIMIT :limite");
         $sql->bindValue(':id', $this->uid);
         $sql->bindValue(':limite', $limite, PDO::PARAM_INT);
         $sql->execute();
-        
+
         //var_dump($sql);        exit();
         if ($sql->rowCount() > 0) {
             $usuarios = $sql->fetchAll();
         }
-        
+
         return $usuarios;
+    }
+
+    public function buscaUsuarioPeloId($id) {
+        $sql = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $usuario = $sql->fetch();
+        }
+        return $usuario;
+    }
+
+    public function getSeguidos() {
+        $stmt = $this->db->prepare("SELECT id_seguido FROM relacionamentos WHERE id_seguidor = :id");
+        $stmt->bindParam(':id', $this->uid);
+        $stmt->execute();
+
+        $resultado = array();
+        if ($stmt->rowCount() > 0) {
+            foreach ($stmt->fetchAll() as $seguido) {
+                $resultado[] = $seguido['id_seguido'];
+            }
+        }
+
+        return $resultado;
     }
 
 }
