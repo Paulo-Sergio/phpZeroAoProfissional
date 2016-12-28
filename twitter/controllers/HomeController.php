@@ -43,7 +43,7 @@ class HomeController extends Controller {
     public function seguir($id) {
         if (!empty($id)) {
             $id = addslashes($id);
-            $u = new Usuarios($id);
+            $u = new Usuarios();
             if ($u->buscaUsuarioPeloId($id) != null) {
                 $r = new Relacionamentos();
                 $r->seguir($_SESSION['twlg'], $id);
