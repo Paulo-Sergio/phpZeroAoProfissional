@@ -15,12 +15,19 @@ class Posts extends Model {
     public function getFeed($lista, $limit) {
         $feeds = array();
         if (count($lista) > 0) {
-            $sql = "SELECT * FROM posts WHERE id_usuario IN (:lista) LIMIT :limit";
+            $lista = implode(', ', $lista);
+            $sql = "SELECT *, u.nome FROM posts p INNER JOIN usuarios u "
+                    . "ON p.id_usuario = u.id WHERE p.id_usuario IN (".$lista.") "
+                    . "ORDER BY p.data_post DESC LIMIT :limit";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindValue(':lista', implode(',', $lista));
-            $stmt->bindValue(':limite', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $feeds = $stmt->fetchAll();
+            }
         }
-        
+
         return $feeds;
     }
 

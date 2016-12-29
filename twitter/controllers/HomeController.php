@@ -24,7 +24,7 @@ class HomeController extends Controller {
         $dados['sugestao'] = $u->getUsuarios(5);
         
         $listaSeguidos = $u->getSeguidos();
-        $listaSeguidos[] = $_SESSION['twlg'];
+        $listaSeguidos[] = $_SESSION['twlg']; // adicionando eu mesmo na lista
         $dados['feed'] = $p->getFeed($listaSeguidos, 10);
 
         $this->loadTemplate('home', $dados);

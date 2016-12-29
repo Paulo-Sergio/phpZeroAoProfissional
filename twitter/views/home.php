@@ -3,6 +3,12 @@
         <textarea name="msg" class="textareapost"></textarea><br>
         <input type="submit" value="Postar Mensagem">
     </form>
+
+    <?php foreach ($feed as $item): ?>
+    <strong><?= $item['nome'] ?></strong> - <?= date('d/m/Y H:i', strtotime($item['data_post'])) ?><br>
+        <?= $item['mensagem'] ?>
+        <hr>
+    <?php endforeach; ?>
 </div>
 <div class="rightside">
     <h4>Relacionamentos</h4>

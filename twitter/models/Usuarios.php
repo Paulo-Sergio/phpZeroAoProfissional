@@ -89,15 +89,16 @@ class Usuarios extends Model {
 
         // select de todos os campos da tabela usuarios
         // um campo 'seguido' para saber se eu sou seguidor de outro usuario
-        $sql = $this->db->prepare("SELECT u.*, (SELECT count(*) FROM relacionamentos r WHERE r.id_seguidor = :id AND r.id_seguido = u.id) as seguido "
-                . "FROM usuarios u WHERE u.id != :id LIMIT :limite");
-        $sql->bindValue(':id', $this->uid);
-        $sql->bindValue(':limite', $limite, PDO::PARAM_INT);
-        $sql->execute();
+        $sql = "SELECT u.*, (SELECT count(*) FROM relacionamentos r WHERE r.id_seguidor = :id AND r.id_seguido = u.id) as seguido "
+                . "FROM usuarios u WHERE u.id != :id LIMIT :limite";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->uid);
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->execute();
 
         //var_dump($sql);        exit();
-        if ($sql->rowCount() > 0) {
-            $usuarios = $sql->fetchAll();
+        if ($stmt->rowCount() > 0) {
+            $usuarios = $stmt->fetchAll();
         }
 
         return $usuarios;
@@ -115,8 +116,9 @@ class Usuarios extends Model {
     }
 
     public function getSeguidos() {
-        $stmt = $this->db->prepare("SELECT id_seguido FROM relacionamentos WHERE id_seguidor = :id");
-        $stmt->bindParam(':id', $this->uid);
+        $sql = "SELECT id_seguido FROM relacionamentos WHERE id_seguidor = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $this->uid);
         $stmt->execute();
 
         $resultado = array();
@@ -125,7 +127,7 @@ class Usuarios extends Model {
                 $resultado[] = $seguido['id_seguido'];
             }
         }
-
+        
         return $resultado;
     }
 
