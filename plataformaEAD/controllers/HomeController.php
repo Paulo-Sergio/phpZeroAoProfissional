@@ -2,11 +2,20 @@
 
 class HomeController extends Controller {
 
+    public function __construct() {
+        parent::__construct();
+
+        $aluno = new Alunos();
+        if (!$aluno->islogged()) {
+            header("Location: " . BASE_URL . "login");
+        }
+    }
+
     public function index() {
-		$dados = array();
-		
-		
-		
+        $dados = array();
+
+
+
         $this->loadTemplate('home', $dados);
     }
 
