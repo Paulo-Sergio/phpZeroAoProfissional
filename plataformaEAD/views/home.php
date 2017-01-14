@@ -1,1 +1,10 @@
-<h1>Algum code HTML</h1>
+<h1>Seus Cursos</h1>
+<?php foreach ($cursos as $curso) : ?>
+    <a href="<?= BASE_URL ?>cursos/entrar/<?= $curso['id_curso'] ?>"> 
+        <div class="curso-item">
+            <img src="" width="260" height="150"><br><br>
+            <strong><?= $curso['nome'] ?></strong>
+            <?= $curso['descricao'] ?>
+        </div>
+    </a> 
+<?php endforeach; ?>

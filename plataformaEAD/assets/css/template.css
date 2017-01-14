@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    background-color: #EEE;
+}
+
+/**********************
+    TOPO
+***********************/
+.topo{
+    height: 40px;
+    background-color: #333;
+    color: #fff
+}
+.topo a {
+    color: #fff;
+    text-decoration: none;
+    float: right;
+}
+.topo a div {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.topo a div:hover {
+    background-color: #555;
+}
+.topo-usuario{
+    float: right;
+    margin-right: 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+
+.curso-item{
+    width: 260px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+}
