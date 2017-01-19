@@ -4,7 +4,7 @@ body{
 }
 
 /**********************
-    TOPO
+    TOPO - TEMPLATE
 ***********************/
 .topo{
     height: 40px;
@@ -34,7 +34,9 @@ body{
 }
 
 
-
+/*********************
+    CONTENT - Home.php
+*********************/
 .curso-item{
     width: 260px;
     float: left;
@@ -44,4 +46,36 @@ body{
     border: 2px solid #ccc;
     border-radius: 10px;
     text-align: center;
+}
+
+/*********************
+    CONTENT - Curso_entrar.php
+*********************/
+.curso-info {
+    height: 80px;
+    background-color: #CCC;
+}
+.curso-info img{
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.curso-info h3{
+    margin: 0;
+    padding-top: 10px;
+}
+.curso_left{
+    width: 30%;
+    min-height: 300px;
+    float: left;
+    background-color: #DDD;
+    overflow-y: scroll;
+}
+.curso_right{
+    width: 70%;
+    min-height: 300px;
+    float: left;
+    background-color: #888;
+    overflow-y: scroll;
 }

@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>EAD</title>
         <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/template.css"/>
+        <script type="text/javascript" src="<?= BASE_URL ?>assets/js/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="<?= BASE_URL ?>assets/js/script.js"></script>
     </head>
     <body>
 

@@ -38,10 +38,22 @@ class Alunos extends Model {
         }
     }
 
+    public function isInscrito($id_curso) {
+        $sql = "SELECT * FROM aluno_curso WHERE id_aluno = :id_aluno AND id_curso = :id_curso";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id_aluno', $this->info['id']);
+        $stmt->bindValue(':id_curso', $id_curso);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public function getNome() {
         return $this->info['nome'];
     }
-    
+
     public function getId() {
         return $this->info['id'];
     }
