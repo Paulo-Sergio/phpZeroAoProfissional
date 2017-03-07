@@ -1,0 +1,13 @@
+<h1>Agenda de Contatos - Atualizar</h1>
+
+<form method="POST">
+    <input type="hidden" name="id" value="<?= $info['id'] ?>"/>
+
+    Nome:<br>
+    <input type="text" name="nome" value="<?= $info['nome'] ?>"><br><br>
+
+    Telefone:<br>
+    <input type="text" name="telefone" value="<?= $info['telefone'] ?>"><br><br>
+
+    <input type="submit" value="Salvar"/>
+</form>
