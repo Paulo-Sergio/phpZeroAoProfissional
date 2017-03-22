@@ -48,5 +48,11 @@ class Lista {
         $stmt->bindValue(':id', $id);
         $stmt->execute();
     }
+    
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM lista WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
 
 }

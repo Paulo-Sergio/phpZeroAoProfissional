@@ -6,8 +6,8 @@
     <?php foreach ($lista as $item): ?>
         <li>
             <?= $item['nome'] ?> - <?= $item['telefone'] ?> - 
-            <a href="./edit/<?= $item['id'] ?>">Editar</a> - 
-            <a href="./del/<?= $item['id'] ?>">Excluir</a>
+            <a href="<?= BASE_URL ?>edit/<?= $item['id'] ?>">Editar</a> - 
+            <a href="<?= BASE_URL ?>del/<?= $item['id'] ?>">Excluir</a>
         </li>
     <?php endforeach; ?>
 </ul>
