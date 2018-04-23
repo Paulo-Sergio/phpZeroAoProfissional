@@ -3,17 +3,17 @@
 class Core {
 
     public function run() {
-        /* /phpZeroAoProfissional/estruturaMVC/index.php/home/teste = /home/teste
-          $url = explode('index.php', $_SERVER['PHP_SELF']);
-          $url = end($url);
-         */
+        $url = '/';
 
-        $url = '/' . ( (isset($_GET['q'])) ? $_GET['q'] : '' );
+        if (isset($_GET['url'])) {
+            $url .= $_GET['url'];
+        }
 
         $params = array();
         if (!empty($url) && $url != '/') {
             $url = explode('/', $url);
             array_shift($url); // remove $url[0] = ''
+            
             // Pegando qual controller
             $currentController = ucfirst($url[0]) . 'Controller';
             array_shift($url);
@@ -31,7 +31,7 @@ class Core {
                 $params = $url;
             }
         } else {
-            $currentController = 'homeController';
+            $currentController = 'HomeController';
             $currentAction = 'index';
         }
 
