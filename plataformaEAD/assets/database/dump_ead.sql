@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: ead
+-- Host: localhost    Database: plataforma_ead
 -- ------------------------------------------------------
--- Server version	5.7.11
+-- Server version	5.7.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `aluno_curso`
+-- Table structure for table `aluno_cursos`
 --
 
-DROP TABLE IF EXISTS `aluno_curso`;
+DROP TABLE IF EXISTS `aluno_cursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `aluno_curso` (
+CREATE TABLE `aluno_cursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_curso` int(11) NOT NULL,
   `id_aluno` int(11) NOT NULL,
@@ -31,17 +31,17 @@ CREATE TABLE `aluno_curso` (
   KEY `id_aluno_fk_idx` (`id_aluno`),
   CONSTRAINT `aluno_curso_id_aluno_fk` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `aluno_curso_id_curso_fk` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `aluno_curso`
+-- Dumping data for table `aluno_cursos`
 --
 
-LOCK TABLES `aluno_curso` WRITE;
-/*!40000 ALTER TABLE `aluno_curso` DISABLE KEYS */;
-INSERT INTO `aluno_curso` VALUES (1,1,1),(2,3,1),(3,7,1);
-/*!40000 ALTER TABLE `aluno_curso` ENABLE KEYS */;
+LOCK TABLES `aluno_cursos` WRITE;
+/*!40000 ALTER TABLE `aluno_cursos` DISABLE KEYS */;
+INSERT INTO `aluno_cursos` VALUES (1,1,1),(2,3,1),(3,7,1);
+/*!40000 ALTER TABLE `aluno_cursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `alunos` (
 
 LOCK TABLES `alunos` WRITE;
 /*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
-INSERT INTO `alunos` VALUES (1,'Paulo França','paulo@gmail.com','698dc19d489c4e4db73e28a713eab07b');
+INSERT INTO `alunos` VALUES (1,'Paulo França','paulo@gmail.com','e10adc3949ba59abbe56e057f20f883e');
 /*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `aulas` (
   KEY `id_curso_fk_idx` (`id_curso`),
   CONSTRAINT `aulas_id_curso_fk` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `aulas_id_modulo_fk` FOREIGN KEY (`id_modulo`) REFERENCES `modulos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,6 +97,7 @@ CREATE TABLE `aulas` (
 
 LOCK TABLES `aulas` WRITE;
 /*!40000 ALTER TABLE `aulas` DISABLE KEYS */;
+INSERT INTO `aulas` VALUES (1,1,1,1,'video'),(2,1,1,2,'video'),(3,2,1,1,'video'),(4,2,1,2,'poll'),(5,3,1,1,'video'),(6,3,1,2,'video'),(7,3,1,3,'video');
 /*!40000 ALTER TABLE `aulas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +170,7 @@ CREATE TABLE `modulos` (
   PRIMARY KEY (`id`),
   KEY `id_curso_fk_idx` (`id_curso`),
   CONSTRAINT `modulos_id_curso_fk` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,6 +179,7 @@ CREATE TABLE `modulos` (
 
 LOCK TABLES `modulos` WRITE;
 /*!40000 ALTER TABLE `modulos` DISABLE KEYS */;
+INSERT INTO `modulos` VALUES (1,1,'Básico'),(2,1,'Intermediario'),(3,1,'Avançado');
 /*!40000 ALTER TABLE `modulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-16 22:08:58
+-- Dump completed on 2018-04-23 20:19:10
