@@ -2,18 +2,28 @@
 
 require './enviroment.php';
 
-global $config;
 $config = array();
 
 if (ENVIROMENT == "development") {
-    $config['dbname'] = 'galeria';
+    define("BASE_URL", "http://localhost/phpZeroAoProfissional/estruturaMVC");
+    $config['dbname'] = 'estrutura_mvc';
     $config['dbhost'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';
 } else {
     // $config para ambiente de produção
-    $config['dbname'] = 'galeria';
+    define("BASE_URL", "http://paulofrancaweb.com.br");
+    $config['dbname'] = 'estrutura_mvc';
     $config['dbhost'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';
+}
+
+global $pdo;
+try{
+    $pdo = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['dbhost'].";charset=utf8",
+        $config['dbuser'], $config['dbpass']);
+} catch (PDOException $e) {
+    echo "ERROR: " . $e->getMessage();
+    exit;
 }

@@ -1,15 +1,17 @@
 <?php
 
-class Usuario {
+class Usuario extends Model {
 
-    private $name;
-
-    public function setName($name) {
+    public function setNome($name) {
         $this->name = $name;
     }
 
-    public function getName() {
-        return $this->name;
+    public function getNome() {
+        return 'Paulo';
+    }
+
+    public function getIdade() {
+        return 26;
     }
 
 }

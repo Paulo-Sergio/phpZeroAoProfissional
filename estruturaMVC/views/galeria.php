@@ -1,0 +1,1 @@
+<h2>Total de: <?= $quantidade ?> galeria(s)</h2>
