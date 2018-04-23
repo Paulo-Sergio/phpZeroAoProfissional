@@ -14,10 +14,13 @@ class LoginController extends Controller {
             $email = addslashes($_POST['email']);
             $senha = md5($_POST['senha']);
 
-            $aluno = new Alunos();
+            $aluno = new Aluno();
             if ($aluno->fazerLogin($email, $senha)) {
                 header("Location: " . BASE_URL);
+                exit;
             }
+
+            $dados['msg'] = 'Login e/ou senha não encontrado!';
         }
 
         $this->loadView("login", $dados);

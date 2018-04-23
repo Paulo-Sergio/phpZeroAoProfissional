@@ -1,6 +1,6 @@
 <?php
 
-class Alunos extends Model {
+class Aluno extends Model {
 
     private $info;
 
@@ -34,12 +34,12 @@ class Alunos extends Model {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->info = $stmt->fetch();
+            $this->info = $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }
 
     public function isInscrito($id_curso) {
-        $sql = "SELECT * FROM aluno_curso WHERE id_aluno = :id_aluno AND id_curso = :id_curso";
+        $sql = "SELECT * FROM aluno_cursos WHERE id_aluno = :id_aluno AND id_curso = :id_curso";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id_aluno', $this->info['id']);
         $stmt->bindValue(':id_curso', $id_curso);

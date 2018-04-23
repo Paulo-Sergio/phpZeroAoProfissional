@@ -1,5 +1,5 @@
 <div class="curso-info">
-    <img src="<?= BASE_URL ?>assets/images/cursos/<?= $curso->getImagem() ?>" height="60"/>
+    <img src="<?= BASE_URL ?>/assets/images/cursos/<?= $curso->getImagem() ?>" height="60"/>
     <h3><?= $curso->getNome() ?></h3>
     <?= $curso->getDescricao() ?>
 </div>

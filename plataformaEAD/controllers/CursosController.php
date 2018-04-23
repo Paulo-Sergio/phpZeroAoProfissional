@@ -4,10 +4,10 @@ class CursosController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        $aluno = new Alunos();
+        $aluno = new Aluno();
 
         if (!$aluno->isLogged()) {
-            header("Location: " . BASE_URL . "login");
+            header("Location: " . BASE_URL . "/login");
         }
     }
 
@@ -21,12 +21,12 @@ class CursosController extends Controller {
             'curso' => array(),
             'aulas' => array()
         );
-        $aluno = new Alunos();
+        $aluno = new Aluno();
         $aluno->setAluno($_SESSION['lgaluno']);
         $dados['info'] = $aluno;
 
         if ($aluno->isInscrito($id)) {
-            $curso = new Cursos();
+            $curso = new Curso();
             $curso->setCurso($id);
             $dados['curso'] = $curso;
             

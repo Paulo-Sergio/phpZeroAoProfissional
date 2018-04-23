@@ -5,9 +5,9 @@ class HomeController extends Controller {
     public function __construct() {
         parent::__construct();
 
-        $aluno = new Alunos();
-        if (!$aluno->islogged()) {
-            header("Location: " . BASE_URL . "login");
+        $aluno = new Aluno();
+        if (!$aluno->isLogged()) {
+            header("Location: " . BASE_URL . "/login");
         }
     }
 
@@ -17,11 +17,11 @@ class HomeController extends Controller {
             'cursos' => array()
         );
 
-        $aluno = new Alunos();
+        $aluno = new Aluno();
         $aluno->setAluno($_SESSION['lgaluno']);
         $dados['info'] = $aluno;
         
-        $curso = new Cursos();
+        $curso = new Curso();
         $dados['cursos'] = $curso->getCursosDoAluno($aluno->getId());
         
 

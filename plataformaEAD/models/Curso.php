@@ -1,16 +1,16 @@
 <?php
 
-class Cursos extends Model {
+class Curso extends Model {
 
     private $info;
 
-    public function getCursosDoAluno($id) {
+    public function getCursosDoAluno($idAluno) {
         $sql = "SELECT ac.id_curso, c.nome, c.imagem, c.descricao "
-                . "FROM aluno_curso ac "
-                . "INNER JOIN cursos c ON ac.id_curso = c.id "
-                . "WHERE ac.id_aluno = :id";
+                . "FROM cursos c "
+                . "INNER JOIN aluno_cursos ac ON c.id = ac.id_curso "
+                . "WHERE ac.id_aluno = :idAluno";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':idAluno', $idAluno);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -28,7 +28,7 @@ class Cursos extends Model {
 
         if ($stmt->rowCount() > 0) {
             $this->info = $stmt->fetch();
-        }    
+        }
     }
     
     public function getNome() {

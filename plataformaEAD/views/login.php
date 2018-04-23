@@ -27,10 +27,16 @@
             h2{
                 text-align: center;
             }
+            div.msg {
+                margin-top: 20px;
+                text-align: center;
+                color: red;
+            }
         </style>
     </head>
 
     <body>
+        
 
         <form method="POST">
             <h2>Login</h2>
@@ -39,6 +45,10 @@
             <input type="password" name="senha" placeholder="******"/><br><br>
 
             <input type="submit" value="Entrar"/>
+
+            <?php if (!empty($msg)) : ?>
+                <div class="msg"><?= $msg ?></div>
+            <?php endif ?>
         </form>
 
     </body>

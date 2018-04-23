@@ -2,20 +2,29 @@
 
 require './enviroment.php';
 
-define('BASE_URL', 'http://localhost/phpZeroAoProfissional/plataformaEAD/');
 
-global $config;
 $config = array();
 
 if (ENVIROMENT == "development") {
-    $config['dbname'] = 'ead';
+    define('BASE_URL', 'http://localhost/phpZeroAoProfissional/plataformaEAD');
+    $config['dbname'] = 'plataforma_ead';
     $config['dbhost'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';
 } else {
     // $config para ambiente de produção
+    define("BASE_URL", "http://paulofrancaweb.com.br");
     $config['dbname'] = 'ead';
     $config['dbhost'] = 'localhost';
     $config['dbuser'] = 'root';
     $config['dbpass'] = '';
+}
+
+global $pdo;
+try{
+    $pdo = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['dbhost'].";charset=utf8",
+        $config['dbuser'], $config['dbpass']);
+} catch (PDOException $e) {
+    echo "ERROR: " . $e->getMessage();
+    exit;
 }
