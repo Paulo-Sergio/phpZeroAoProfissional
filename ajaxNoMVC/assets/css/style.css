@@ -1,0 +1,5 @@
+.borda {
+    border: 1px solid #FF0000;
+    padding: 20px;
+    min-height: 500px;
+}
