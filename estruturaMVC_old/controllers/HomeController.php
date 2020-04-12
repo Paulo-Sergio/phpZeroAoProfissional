@@ -3,11 +3,14 @@
 class HomeController extends Controller {
 
     public function index() {
-        $fotos = new Fotos();
+        $anuncio = new Anuncio();
+        $usuario = new Usuario();
 
-        // $dados['fotos'] = $fotos->getFotos();
         $dados = array(
-            'fotos' => $fotos->getFotos()
+            'nome' => $usuario->getNome(),
+            'idade' => $usuario->getIdade(),
+            'anuncios' => $anuncio->getAllAnuncios(),
+            'quantidade' => $anuncio->getQuantidade()
         );
         $this->loadTemplate('home', $dados);
     }

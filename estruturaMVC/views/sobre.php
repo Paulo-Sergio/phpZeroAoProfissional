@@ -1,1 +1,0 @@
-<h1>Esta página é a Sobre.php</h1>
