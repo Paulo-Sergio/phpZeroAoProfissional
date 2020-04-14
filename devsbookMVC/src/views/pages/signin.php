@@ -15,10 +15,9 @@
   <section class="container main">
     <form method="POST" action="<?=$base?>/login">
       <?php if (!empty($flash)): ?>
-        <div class="flash">
-          <?= $flash ?>
-        </div>
+        <div class="flash"><?= $flash ?></div>
       <?php endif ?>
+      
       <input placeholder="Digite seu e-mail" class="input" type="email" name="email" />
 
       <input placeholder="Digite sua senha" class="input" type="password" name="password" />

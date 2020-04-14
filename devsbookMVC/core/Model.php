@@ -28,6 +28,7 @@ class Model {
         }
         
         self::$_h = self::$_h->table( self::getTableName() );
+        //var_dump(self::$_h); exit;
     }
 
     public static function getTableName() {
