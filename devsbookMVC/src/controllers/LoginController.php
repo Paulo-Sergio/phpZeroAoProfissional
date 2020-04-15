@@ -81,6 +81,7 @@ class LoginController extends Controller {
       }
     }
 
+    $_SESSION['flash'] = 'Campo obrigatórios';
     $this->redirect('/cadastro');
   }
 }

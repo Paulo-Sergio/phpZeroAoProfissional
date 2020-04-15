@@ -16,6 +16,8 @@ class LoginHandler {
         $user->id = $data['id'];
         $user->email = $data['email'];
         $user->name = $data['name'];
+        $user->avatar = $data['avatar'];
+
 
         return $user;
       }
@@ -46,14 +48,14 @@ class LoginHandler {
 
   public static function emailExists($email) {
     $user = User::select()->where('email', $email)->one();
-    return $user;
+    return $user ? true : false;
   }
 
   public static function addUser($name, $email, $password, $birthdate) {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $token = md5(time().rand(0,9999).time());
 
-    $data = User::insert([
+    User::insert([
       'email' => $email,
       'password' => $hash,
       'name' => $name,
