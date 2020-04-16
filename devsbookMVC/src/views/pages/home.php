@@ -9,7 +9,7 @@
     <div class="row">
       <div class="column pr-5">
 
-        <?= $render('feed-editor') ?>
+        <?= $render('feed-editor', ['user' => $loggedUser]) ?>
 
         <?= $render('feed-item') ?>
 
@@ -24,8 +24,8 @@
             </div>
           </div>
           <div class="box-body">
-            <a href=""><img src="https://alunos.b7web.com.br/media/courses/php-nivel-1.jpg" /></a>
-            <a href=""><img src="https://alunos.b7web.com.br/media/courses/laravel-nivel-1.jpg" /></a>
+            <a href="<?=$base?>"><img src="https://alunos.b7web.com.br/media/courses/php-nivel-1.jpg" /></a>
+            <a href="<?=$base?>"><img src="https://alunos.b7web.com.br/media/courses/laravel-nivel-1.jpg" /></a>
           </div>
         </div>
         <div class="box">
