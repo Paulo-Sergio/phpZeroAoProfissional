@@ -19,6 +19,13 @@
               <div class="profile-info-location"><?= $user->city ?></div>
             </div>
             <div class="profile-info-data row">
+              <?php if ($user->id != $loggedUser->id) : ?>
+                <div class="profile-info-item m-width-20">
+                  <a href="<?=$base?>/perfil/<?=$user->id?>/follow" class="button">
+                    <?= ($isFollowing) ? 'Deixar de seguir' : 'Seguir' ?>
+                  </a>
+                </div>
+              <?php endif ?>
               <div class="profile-info-item m-width-20">
                 <div class="profile-info-item-n"><?= count($user->followers) ?></div>
                 <div class="profile-info-item-s">Seguidores</div>
@@ -85,7 +92,7 @@
               <div class="friend-icon">
                 <a href="<?=$base?>/perfil/<?=$user->followings[$i]->id?>">
                   <div class="friend-icon-avatar">
-                    <img src="<?=$base?>media/avatars/<?=$user->followings[$i]->avatar?>" />
+                    <img src="<?=$base?>/media/avatars/<?=$user->followings[$i]->avatar?>" />
                   </div>
                   <div class="friend-icon-name">
                     <?= $user->followings[$i]->name ?>

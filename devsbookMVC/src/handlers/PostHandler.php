@@ -22,7 +22,7 @@ class PostHandler {
     $perPage = 2;
 
     // 1. pegar lista de usuarios que EU sigo (incluindo em mesmo);
-    $userList = UserRelation::select()
+    $userList = UserRelation::getTableName()->select()
       ->where('user_from', $idUser)
       ->get();
     $users = [];

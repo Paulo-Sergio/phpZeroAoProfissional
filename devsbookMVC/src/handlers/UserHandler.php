@@ -93,7 +93,7 @@ class UserHandler {
         $user->photos = [];
 
         // followers (seguidores -> quem me segue)
-        $followers = UserRelation::select()
+        $followers = UserRelation::getTableName()->select()
           ->where('user_to', $id)
           ->get();
 
@@ -110,7 +110,7 @@ class UserHandler {
         }
 
         // following (seguindo -> quem eu sigo)
-        $followings = UserRelation::select()
+        $followings = UserRelation::getTableName()->select()
           ->where('user_from', $id)
           ->get();
 
@@ -135,6 +135,29 @@ class UserHandler {
     }
 
     return false;
+  }
+
+  public static function isFollowing($fromId, $toId) {
+    $data = UserRelation::getTableName()->select()
+      ->where('user_from', $fromId)
+      ->where('user_to', $toId)
+      ->one();
+
+    return $data ? true : false;
+  }
+
+  public static function follow($fromId, $toId) {
+    UserRelation::getTableName()->insert([
+      'user_from' => $fromId,
+      'user_to' => $toId
+    ])->execute();
+  }
+
+  public static function unfollow($fromId, $toId) {
+    UserRelation::getTableName()->delete()
+      ->where('user_from', $fromId)
+      ->where('user_to', $toId)
+      ->execute();
   }
  
 }
