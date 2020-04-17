@@ -44,6 +44,64 @@ class PostHandler {
     $pageCount = ceil($totalPosts / $perPage);
 
     // 3. transformar o resultado em objetos dos models;
+    $posts = self::_postListToObject($postList, $idUser);
+    
+    // 5. retornar o resultado.
+    return [
+      'posts' => $posts,
+      'pageCount' => $pageCount,
+      'currentPage' => $page
+    ];
+  }
+
+  public static function getUserFeed($idUser, $page, $loggedUserId) {
+    $perPage = 2;
+
+    // 2. pegar os posts desse usuário;
+    $postList = Post::select()
+      ->where('id_user', $idUser)
+      ->orderBy('created_at', 'desc')
+      ->page($page, $perPage)
+      ->get();
+
+    $totalPosts = Post::select()
+      ->where('id_user', $idUser)
+      ->count();
+    $pageCount = ceil($totalPosts / $perPage);
+
+    // 3. transformar o resultado em objetos dos models;
+    $posts = self::_postListToObject($postList, $loggedUserId);
+    
+    // 5. retornar o resultado.
+    return [
+      'posts' => $posts,
+      'pageCount' => $pageCount,
+      'currentPage' => $page
+    ];
+  }
+
+  public static function getPhotosFrom($idUser) {
+    $photosData = Post::select()
+      ->where('id_user', $idUser)
+      ->where('type', 'photo')
+      ->get();
+
+    $photos = [];
+
+    foreach ($photosData as $photo) {
+      $post = new Post();
+      $post->id = $photo['id'];
+      $post->type = $photo['type'];
+      $post->created_at = $photo['created_at'];
+      $post->body = $photo['body'];
+
+      $photos[] = $post;
+    }
+
+    return $photos;
+  }
+
+  private static function _postListToObject($postList, $loggedUserId) {
     $posts = [];
     foreach ($postList as $postItem) {
       $post = new Post();
@@ -52,7 +110,7 @@ class PostHandler {
       $post->created_at = $postItem['created_at'];
       $post->body = $postItem['body'];
       $post->mine = false;
-      if ($postItem['id_user'] == $idUser) {
+      if ($postItem['id_user'] == $loggedUserId) {
         $post->mine = true; // post é meu?
       }
 
@@ -74,13 +132,8 @@ class PostHandler {
 
       $posts[] = $post;
     }
-    
-    // 5. retornar o resultado.
-    return [
-      'posts' => $posts,
-      'pageCount' => $pageCount,
-      'currentPage' => $page
-    ];
+
+    return $posts;
   }
  
 }

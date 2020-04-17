@@ -127,6 +127,8 @@ class UserHandler {
         }
 
         // photos
+        $user->photos = PostHandler::getPhotosFrom($id);
+
       }
 
       return $user;
