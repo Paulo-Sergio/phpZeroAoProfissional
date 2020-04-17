@@ -22,7 +22,6 @@
             </a>
           <?php endfor; ?>
         </div>
-        TOTAL DE PAGINAS: <?= $feed['pageCount'] ?>
 
       </div>
 

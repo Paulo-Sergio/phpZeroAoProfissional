@@ -84,4 +84,9 @@ class LoginController extends Controller {
     $_SESSION['flash'] = 'Campo obrigatórios';
     $this->redirect('/cadastro');
   }
+
+  public function logout() {
+    $_SESSION['token'] = '';
+    $this->redirect('/login');
+  }
 }
