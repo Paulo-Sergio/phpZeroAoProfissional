@@ -70,4 +70,30 @@ class ProfileController extends Controller {
         $this->redirect("/perfil/$to");
     }
 
+    public function friends($atts = []) {
+        // detectando usuario acessado
+        $id = $this->loggedUser->id; // meu proprio ID
+        if (!empty($atts['id'])) {
+            $id = $atts['id']; // ID de outro usuário
+        }
+
+        // pegando informações do usuario
+        $user = UserHandler::getUser($id, true);
+        if (!$user) {
+            $this->redirect('/');
+        }
+
+        // verificar se EU sigo o usuario
+        $isFollowing = false;
+        if ($user->id != $this->loggedUser->id) {
+            $isFollowing = UserHandler::isFollowing($this->loggedUser->id, $user->id);
+        }
+
+        $this->render('profile_friends', [
+            'loggedUser' => $this->loggedUser,
+            'user' => $user,
+            'isFollowing' => $isFollowing
+        ]);
+    }
+
 }

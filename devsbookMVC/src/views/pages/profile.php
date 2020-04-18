@@ -81,7 +81,7 @@
               <span>(<?= count($user->followings) ?>)</span>
             </div>
             <div class="box-header-buttons">
-              <a href="">ver todos</a>
+              <a href="<?=$base?>/perfil/<?=$user->id?>/friends">ver todos</a>
             </div>
           </div>
           <div class="box-body friend-list">
