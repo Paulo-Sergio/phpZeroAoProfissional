@@ -23,8 +23,8 @@ $router->get('/friends', 'ProfileController@friends');
 
 $router->get('/photos', 'ProfileController@photos');
 
+$router->get('/pesquisa', 'SearchController@index');
+
 $router->get('/sair', 'LoginController@logout');
 
-//$router->get('/pesquisa', 'LoginController@signup');
-//$router->get('/amigos', 'LoginController@signup');
 //$router->get('/config', 'LoginController@signup');
