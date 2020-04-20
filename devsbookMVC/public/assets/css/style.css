@@ -429,6 +429,34 @@ header .head-side {
     background-color:#477dbb;
 }
 
+/**
+********* TELA CONFIG ********
+**/
+.form-confir-input-submit {
+    max-width: 80px;
+}
+.form-config-file {
+    margin: 15px 0 15px 0;
+}
+.form-config-file input {
+    margin: 10px 0 15px 15px  ;    
+}
+.form-config-data {
+    margin:10px 0 10px 0 ;
+}
+.form-config-data input{
+    margin-bottom:10px; 
+    width: 500px;
+    line-height: 20px;
+}
+.flash {
+    border:2x solid red;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 992px) {
     header .head-side-right {
         display:none !important;

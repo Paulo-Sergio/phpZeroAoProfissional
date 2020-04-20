@@ -18,7 +18,10 @@ class UserHandler {
         $user->email = $data['email'];
         $user->name = $data['name'];
         $user->avatar = $data['avatar'];
-
+        $user->birthdate = $data['birthdate'];
+        $user->email = $data['email'];
+        $user->city = $data['city'];
+        $user->work = $data['work'];
 
         return $user;
       }
@@ -81,6 +84,7 @@ class UserHandler {
       $user = new User();
       $user->id = $data['id'];
       $user->name = $data['name'];
+      $user->email = $data['email'];
       $user->birthdate = $data['birthdate'];
       $user->city = $data['city'];
       $user->work = $data['work'];
@@ -178,6 +182,35 @@ class UserHandler {
     }
 
     return $users;
+  }
+
+  public static function updateUser($id, $email, $password, $name, $birthDate, $city, $work, $avatar, $cover){
+    //Gera o hash da senha, caso a senha mude
+    if (!empty($password)) {
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      User::update()
+          ->set('email',$email)
+          ->set('password',$hash)
+          ->set('name', $name)
+          ->set('birthdate', $birthDate)
+          ->set('city', $city)
+          ->set('work', $work)
+          ->set('avatar',$avatar)
+          ->set('cover',$cover)
+          ->where('id',$id)
+          ->execute();
+    } else {
+      User::update()
+          ->set('email',$email)
+          ->set('name', $name)
+          ->set('birthdate', $birthDate)
+          ->set('city', $city)
+          ->set('work', $work)
+          ->set('avatar',$avatar)
+          ->set('cover',$cover)
+          ->where('id',$id)
+          ->execute();
+    }
   }
  
 }

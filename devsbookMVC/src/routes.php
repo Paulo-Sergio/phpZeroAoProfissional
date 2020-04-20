@@ -27,4 +27,5 @@ $router->get('/pesquisa', 'SearchController@index');
 
 $router->get('/sair', 'LoginController@logout');
 
-//$router->get('/config', 'LoginController@signup');
+$router->get('/config','ConfigController@index');
+$router->post('/config','ConfigController@configAction');
